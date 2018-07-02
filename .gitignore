@@ -1,0 +1,10 @@
+# Intellij files
+.idea/
+out/
+
+# Gradle files
+.gradle/
+build/
+
+# Test outputs
+*.csv
