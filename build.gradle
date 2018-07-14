@@ -1,24 +1,21 @@
-import jaci.openrio.gradle.GradleRIOPlugin
-import jaci.openrio.gradle.frc.FRCJavaArtifact
-import jaci.openrio.gradle.frc.RoboRIO
-
 plugins {
-    id 'jaci.openrio.gradle.GradleRIO' version '2018.03.06'
+    id 'edu.wpi.first.GradleRIO' version '2018.06.21'
     id 'java'
 }
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 deploy {
     targets {
-        target('roborio', RoboRIO) {
+        target('roborio', edu.wpi.first.gradlerio.frc.RoboRIO) {
             team = 2910
         }
     }
     artifacts {
-        artifact('robotCode', FRCJavaArtifact) {
+        artifact('robotCode', edu.wpi.first.gradlerio.frc.FRCJavaArtifact) {
             targets << 'roborio'
         }
     }
@@ -29,10 +26,15 @@ dependencies {
     compile ctre()
     compile navx()
 
-    compile project(':common:robot')
+    compile group: 'org.frcteam2910.common', name: 'robot', version: '1.0.0'
 }
 
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest GradleRIOPlugin.javaManifest('org.frcteam2910.o2017.Robot')
+    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest('org.frcteam2910.o2017.Robot')
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = '4.8.1'
 }
