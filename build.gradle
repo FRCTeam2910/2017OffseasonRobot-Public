@@ -26,7 +26,7 @@ dependencies {
     compile ctre()
     compile navx()
 
-    compile group: 'org.frcteam2910.common', name: 'robot', version: '1.0.0'
+    compile group: 'org.frcteam2910.common', name: 'robot', version: '0.1.0'
 }
 
 jar {
