@@ -15,23 +15,25 @@ import static org.frcteam2910.o2017.RobotMap.*;
 public class Drivetrain extends SwerveDrivetrain {
 	private static final Drivetrain instance = new Drivetrain();
 
-	private final SwerveModule[] swerveModules = new SwerveModule[]{
-			new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, WHEELBASE / 2),
-					DRIVETRAIN_FRONT_LEFT_OFFSET,
-					DRIVETRAIN_FRONT_LEFT_ANGLE,
-					DRIVETRAIN_FRONT_LEFT_DRIVE),
-			new SwerveModule2017(new Vector2(TRACKWIDTH / 2, WHEELBASE / 2),
-					DRIVETRAIN_FRONT_RIGHT_OFFSET,
-					DRIVETRAIN_FRONT_RIGHT_ANGLE,
-					DRIVETRAIN_FRONT_RIGHT_DRIVE),
-			new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, -WHEELBASE / 2),
-					DRIVETRAIN_BACK_LEFT_OFFSET,
-					DRIVETRAIN_BACK_LEFT_ANGLE,
-					DRIVETRAIN_BACK_LEFT_DRIVE),
-			new SwerveModule2017(new Vector2(TRACKWIDTH / 2, -WHEELBASE / 2),
-					DRIVETRAIN_BACK_RIGHT_OFFSET,
-					DRIVETRAIN_BACK_RIGHT_ANGLE,
-					DRIVETRAIN_BACK_RIGHT_DRIVE)
+	private final SwerveModule frontLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, WHEELBASE / 2),
+			DRIVETRAIN_FRONT_LEFT_OFFSET,
+			DRIVETRAIN_FRONT_LEFT_ANGLE,
+			DRIVETRAIN_FRONT_LEFT_DRIVE);
+	private final SwerveModule frontRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, WHEELBASE / 2),
+			DRIVETRAIN_FRONT_RIGHT_OFFSET,
+			DRIVETRAIN_FRONT_RIGHT_ANGLE,
+			DRIVETRAIN_FRONT_RIGHT_DRIVE);
+	private final SwerveModule backLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, -WHEELBASE / 2),
+			DRIVETRAIN_BACK_LEFT_OFFSET,
+			DRIVETRAIN_BACK_LEFT_ANGLE,
+			DRIVETRAIN_BACK_LEFT_DRIVE);
+	private final SwerveModule backRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, -WHEELBASE / 2),
+			DRIVETRAIN_BACK_RIGHT_OFFSET,
+			DRIVETRAIN_BACK_RIGHT_ANGLE,
+			DRIVETRAIN_BACK_RIGHT_DRIVE);
+	private final SwerveModule[] swerveModules = {
+		frontLeftModule, frontRightModule,
+		backLeftModule, backRightModule
 	};
 
 	private final NavX navX = new NavX(SPI.Port.kMXP);
@@ -41,13 +43,10 @@ public class Drivetrain extends SwerveDrivetrain {
 		// increase when the robot is rotated counter-clockwise
 		navX.setInverted(true);
 
-		swerveModules[0].setInverted(true);
-		swerveModules[2].setInverted(true);
-
-		swerveModules[0].setName("Front Left");
-		swerveModules[1].setName("Front Right");
-		swerveModules[2].setName("Back Left");
-		swerveModules[3].setName("Back Right");
+		frontLeftModule.setName("Front Left");
+		frontRightModule.setName("Front Right");
+		backLeftModule.setName("Back Left");
+		backRightModule.setName("Back Right");
 	}
 
 	public static Drivetrain getInstance() {

@@ -26,7 +26,7 @@ public class OI {
 
 		getDrivetrainForwardAxis().setScale(0.5);
 		getDrivetrainStrafeAxis().setScale(0.5);
-		getDrivetrainRotationAxis().setScale(0.5);
+		getDrivetrainRotationAxis().setScale(0.05);
 	}
 
 	public Axis getDrivetrainForwardAxis() {
