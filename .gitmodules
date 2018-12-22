@@ -1,0 +1,3 @@
+[submodule "jester"]
+	path = jester
+	url = https://github.com/FRCTeam2910/Common.git

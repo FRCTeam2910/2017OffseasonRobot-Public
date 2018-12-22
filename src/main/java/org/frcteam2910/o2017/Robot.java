@@ -75,7 +75,7 @@ public class Robot extends IterativeRobot {
 			subsystemManager.zeroSensors();
 			subsystemManager.enableKinematicLoop(KINEMATICS_PERIOD);
 
-			drivetrain.holonomicDrive(new Vector2(), 0);
+			drivetrain.holonomicDrive(Vector2.ZERO, 0);
 		} catch (Throwable t) {
 			new Logger("teleopInit").error(t);
 			throw t;

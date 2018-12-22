@@ -2,6 +2,7 @@ package org.frcteam2910.o2017.subsystems;
 
 import edu.wpi.first.wpilibj.SPI;
 import org.frcteam2910.common.drivers.Gyroscope;
+import org.frcteam2910.common.math.Rotation2;
 import org.frcteam2910.common.math.Vector2;
 import org.frcteam2910.common.robot.commands.HolonomicDriveCommand;
 import org.frcteam2910.common.robot.drivers.NavX;
@@ -16,19 +17,19 @@ public class Drivetrain extends SwerveDrivetrain {
 	private static final Drivetrain instance = new Drivetrain();
 
 	private final SwerveModule frontLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, WHEELBASE / 2),
-			DRIVETRAIN_FRONT_LEFT_OFFSET,
+			Rotation2.fromDegrees(DRIVETRAIN_FRONT_LEFT_OFFSET),
 			DRIVETRAIN_FRONT_LEFT_ANGLE,
 			DRIVETRAIN_FRONT_LEFT_DRIVE);
 	private final SwerveModule frontRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, WHEELBASE / 2),
-			DRIVETRAIN_FRONT_RIGHT_OFFSET,
+			Rotation2.fromDegrees(DRIVETRAIN_FRONT_RIGHT_OFFSET),
 			DRIVETRAIN_FRONT_RIGHT_ANGLE,
 			DRIVETRAIN_FRONT_RIGHT_DRIVE);
 	private final SwerveModule backLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, -WHEELBASE / 2),
-			DRIVETRAIN_BACK_LEFT_OFFSET,
+			Rotation2.fromDegrees(DRIVETRAIN_BACK_LEFT_OFFSET),
 			DRIVETRAIN_BACK_LEFT_ANGLE,
 			DRIVETRAIN_BACK_LEFT_DRIVE);
 	private final SwerveModule backRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, -WHEELBASE / 2),
-			DRIVETRAIN_BACK_RIGHT_OFFSET,
+			Rotation2.fromDegrees(DRIVETRAIN_BACK_RIGHT_OFFSET),
 			DRIVETRAIN_BACK_RIGHT_ANGLE,
 			DRIVETRAIN_BACK_RIGHT_DRIVE);
 	private final SwerveModule[] swerveModules = {

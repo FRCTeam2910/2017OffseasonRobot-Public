@@ -1,5 +1,5 @@
 plugins {
-    id 'edu.wpi.first.GradleRIO' version '2018.06.21'
+    id 'edu.wpi.first.GradleRIO' version '2019.0.0-alpha-3'
     id 'java'
 }
 
@@ -22,11 +22,7 @@ deploy {
 }
 
 dependencies {
-    compile wpilib()
-    compile ctre()
-    compile navx()
-
-    compile group: 'org.frcteam2910.common', name: 'robot', version: '0.1.0'
+    compile project(':jester:robot')
 }
 
 jar {
@@ -36,5 +32,5 @@ jar {
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = '4.8.1'
+    gradleVersion = '4.10.3'
 }
