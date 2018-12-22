@@ -8,7 +8,7 @@ import org.frcteam2910.common.robot.subsystems.SubsystemManager;
 import org.frcteam2910.o2017.subsystems.Drivetrain;
 
 public class Robot extends IterativeRobot {
-    public static final double KINEMATICS_PERIOD = 5 * 1e-3; // 5 ms
+    public static final double KINEMATICS_PERIOD = 5.0 * 1e-3; // 5 ms
 
 	private final Drivetrain drivetrain = Drivetrain.getInstance();
 	private final SubsystemManager subsystemManager = new SubsystemManager(drivetrain);

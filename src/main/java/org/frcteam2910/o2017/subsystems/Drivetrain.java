@@ -1,12 +1,12 @@
 package org.frcteam2910.o2017.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SPI;
 import org.frcteam2910.common.drivers.Gyroscope;
-import org.frcteam2910.common.math.Rotation2;
 import org.frcteam2910.common.math.Vector2;
 import org.frcteam2910.common.robot.commands.HolonomicDriveCommand;
 import org.frcteam2910.common.robot.drivers.NavX;
-import org.frcteam2910.common.robot.drivers.SwerveModule2017;
+import org.frcteam2910.common.robot.drivers.OnboardPid2017SwerveModule;
 import org.frcteam2910.common.robot.subsystems.SwerveDrivetrain;
 import org.frcteam2910.common.drivers.SwerveModule;
 import org.frcteam2910.o2017.OI;
@@ -16,22 +16,22 @@ import static org.frcteam2910.o2017.RobotMap.*;
 public class Drivetrain extends SwerveDrivetrain {
 	private static final Drivetrain instance = new Drivetrain();
 
-	private final SwerveModule frontLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, WHEELBASE / 2),
-			Rotation2.fromDegrees(DRIVETRAIN_FRONT_LEFT_OFFSET),
-			DRIVETRAIN_FRONT_LEFT_ANGLE,
-			DRIVETRAIN_FRONT_LEFT_DRIVE);
-	private final SwerveModule frontRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, WHEELBASE / 2),
-			Rotation2.fromDegrees(DRIVETRAIN_FRONT_RIGHT_OFFSET),
-			DRIVETRAIN_FRONT_RIGHT_ANGLE,
-			DRIVETRAIN_FRONT_RIGHT_DRIVE);
-	private final SwerveModule backLeftModule = new SwerveModule2017(new Vector2(-TRACKWIDTH / 2, -WHEELBASE / 2),
-			Rotation2.fromDegrees(DRIVETRAIN_BACK_LEFT_OFFSET),
-			DRIVETRAIN_BACK_LEFT_ANGLE,
-			DRIVETRAIN_BACK_LEFT_DRIVE);
-	private final SwerveModule backRightModule = new SwerveModule2017(new Vector2(TRACKWIDTH / 2, -WHEELBASE / 2),
-			Rotation2.fromDegrees(DRIVETRAIN_BACK_RIGHT_OFFSET),
-			DRIVETRAIN_BACK_RIGHT_ANGLE,
-			DRIVETRAIN_BACK_RIGHT_DRIVE);
+	private final SwerveModule frontLeftModule = new OnboardPid2017SwerveModule(new Vector2(-TRACKWIDTH / 2, WHEELBASE / 2),
+			DRIVETRAIN_FRONT_LEFT_OFFSET,
+			new WPI_TalonSRX(DRIVETRAIN_FRONT_LEFT_ANGLE),
+			new WPI_TalonSRX(DRIVETRAIN_FRONT_LEFT_DRIVE));
+	private final SwerveModule frontRightModule = new OnboardPid2017SwerveModule(new Vector2(TRACKWIDTH / 2, WHEELBASE / 2),
+			DRIVETRAIN_FRONT_RIGHT_OFFSET,
+			new WPI_TalonSRX(DRIVETRAIN_FRONT_RIGHT_ANGLE),
+			new WPI_TalonSRX(DRIVETRAIN_FRONT_RIGHT_DRIVE));
+	private final SwerveModule backLeftModule = new OnboardPid2017SwerveModule(new Vector2(-TRACKWIDTH / 2, -WHEELBASE / 2),
+			DRIVETRAIN_BACK_LEFT_OFFSET,
+			new WPI_TalonSRX(DRIVETRAIN_BACK_LEFT_ANGLE),
+			new WPI_TalonSRX(DRIVETRAIN_BACK_LEFT_DRIVE));
+	private final SwerveModule backRightModule = new OnboardPid2017SwerveModule(new Vector2(TRACKWIDTH / 2, -WHEELBASE / 2),
+			DRIVETRAIN_BACK_RIGHT_OFFSET,
+			new WPI_TalonSRX(DRIVETRAIN_BACK_RIGHT_ANGLE),
+			new WPI_TalonSRX(DRIVETRAIN_BACK_RIGHT_DRIVE));
 	private final SwerveModule[] swerveModules = {
 		frontLeftModule, frontRightModule,
 		backLeftModule, backRightModule
